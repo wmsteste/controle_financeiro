@@ -2,7 +2,7 @@
  session_start();
 
  if (!isset($_SESSION['nome'])) {
- 	header('Location: indexx.php?erro=1');
+ 	header('Location: ../indexx.php?erro=1');
  }
  require_once('db.class.php');
  require_once "functions/pages.php";
