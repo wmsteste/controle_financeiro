@@ -1,4 +1,7 @@
 <?php 
+if (!isset($_SESSION['nome'])) {
+ 	header('Location: ../index.php?erro=1');
+ }
 $sql = "SELECT sum(valor) FROM contas WHERE dividir ='1'";
 $resultado_id = mysqli_query($link, $sql);
 $qtde_soma = 0;

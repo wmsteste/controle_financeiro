@@ -25,7 +25,7 @@
 
 			header('location: home.php?pages=inicio');
 		}else{
-			header('location: ../indexx.php?erro=1');
+			header('location: ../index.php?erro=1');
 		}
 		
 	}else{
