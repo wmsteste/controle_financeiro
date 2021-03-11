@@ -1,6 +1,4 @@
 <?php
-  
-  $erro_usuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario'] : 0;
   $erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
 ?>
 <!DOCTYPE html>
@@ -25,22 +23,32 @@
 </style>
 </head>
 <body> <div class="container"><br>
- <div class="labelC"> <p>CADASTRE-SE</p></div>
-<form method="POST" action="registra_usuario.php" id="formCadastrarse" >
+ <div class="labelC"> <h2>CADASTRE-SE</h2></div>
+<form method="POST" action="app/registra_usuario.php" id="formCadastrarse" >
   <div class="form-row">
+    
     <div class="form-group col-md-6">
       <label for="inputNome">Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="requiored">
+      <input type="text" class="form-control" id="nome" name="nome"  placeholder="Nome" required="requiored">
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
       <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+            <?php
+
+                if ($erro_email==1) {
+                  echo '<font color="#FF0000"> Esse e-mail já pertence a um usuário já cadastrado</font>';
+                }
+
+              ?>
     </div>
+    
     <div class="form-group col-md-6">
       <label for="inputPassword4">Senha</label>
       <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
     </div>
   </div>
+  
   <div class="form-group">
     <label for="inputAddress">Endereço</label>
     <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" required="requiored">
@@ -75,7 +83,7 @@
  <div class="botao"> <button type="submit" id="botao" class="btn btn-primary">Cadastrar</button>
  <br>
     <br>
-    <a href="indexx.php">Voltar ao Login</a></div>
+    <a href="index.php">Voltar ao Login</a></div>
 </form>
 
 

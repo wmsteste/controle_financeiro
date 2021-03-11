@@ -72,16 +72,16 @@ $id_usuario = $_SESSION['nome'];
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link btn-outline-success" aria-pressed="true" href="?page=home">Home</a>
+            <a class="nav-link btn-outline-success" aria-pressed="true" href="?page=inicio">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link btn-outline-success" aria-current="true" href="?page=cadastroconta">Cadastrar contas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="?page=cadastrouser" aria-current="true">Cadastrar usuarios</a>
+            <a class="nav-link btn-outline-success" href="?page=cadastrouser" aria-current="true">Cadastrar dependentes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="#"  aria-current="true">Opções</a>
+            <a class="nav-link btn-outline-success" href="?page=opcoes"  aria-current="true">Opções</a>
           </li>
         </ul>
         <form class="d-flex">

@@ -11,7 +11,7 @@ require_once('db.class.php');
 	 $estado = ($_POST['estado']);
 	 $cep = ($_POST['CEP']);
 
-$button2 = "<a href=index.php><button>Voltar para Login</button></a>";
+$button2 = "<a href=../index.php><button>Voltar para Login</button></a>";
 
 
 $objDb = new db();
@@ -42,7 +42,7 @@ if ($email_existe) {
 		$retorno_get.="erro_email=1&";
 	}
 
-	header('Location: inscreva.php?'.$retorno_get);
+	header('Location: ../inscreva.php?'.$retorno_get);
 	die();
 }
 
