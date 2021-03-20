@@ -1,4 +1,5 @@
-	<h2>Cadastro de usuario</h2>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <h2>Cadastro de usuario</h2>
 	<form method="POST" >
 	<div class="form-row">
     <div class="form-group col-md-6">
@@ -14,6 +15,25 @@
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+
+
+<div id='resposta'></div>
+
+<script language="javascript">
+    var email = $("#inputEmail4"); 
+        email.blur(function() { 
+            $.ajax({ 
+                url: '../app/registra_usuario.php', 
+                type: 'POST', 
+                data:{"email" : email.val()}, 
+                success: function(data) { 
+                console.log(data); 
+                data = $.parseJSON(data); 
+                $("#resposta").text(data.email);
+            } 
+        }); 
+    }); 
+</script>
     </div>
     <div class="form-group  col-md-6">
       <label for="inputPassword4">Password</label>

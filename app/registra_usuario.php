@@ -34,6 +34,7 @@ if($resultado_id = mysqli_query($link, $sql)){
 	echo "Erro ao tentar localizar o registro de email";
 }
 
+
 if ($email_existe) {
 
 	$retorno_get = '';

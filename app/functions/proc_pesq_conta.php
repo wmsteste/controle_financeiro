@@ -41,7 +41,10 @@ if (($result_pesq_cont) AND ($result_pesq_cont -> num_rows != 0)) {
 	}
 $table. "  </tbody>";
 $table."</table>";
-echo $table;
+echo "
+
+fakçlkçalmsçdlaçsldmçlmdçalsmdçlasmdçlasmdççlasm.sam.sakmnc
+";
 }
 else{
 	echo "Conta não encontrada";

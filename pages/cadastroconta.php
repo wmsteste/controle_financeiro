@@ -1,4 +1,7 @@
+<?php 
+   $data = date("d/m/y");
 
+ ?>
 <h2>Cadastro de contas</h2>
 
 	
@@ -14,10 +17,10 @@
     </div>
   </div>  
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-6">
       <label for="inputState">Tipo</label>
-      <select id="inputState" name="tipo" class="form-control" required="required" placeholder="Escolha a conta que deseja cadastrar">
-      	<option> </option>
+      <select id="inputState" name="tipo" class="form-control" required="required" >
+      	<option selected=""> Selecione</option>
         <option>APARTAMENTO</option>
         <option>TELEFONIA</option>
         <option>LUZ</option>
@@ -27,11 +30,18 @@
         <option>OUTROS</option>
       </select>
     </div>
+     <div class="form-group col-md-6">
+      <label for="inputState">Tipo</label>
+      <select id="date" name="date"  class="form-control" required="required">
+        <option selected=""> <?= $data?></option>
+        <option>...</option>
+      </select>
+    </div>
 </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Descrição</label>
-      <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="2"></textarea>
+      <textarea class="form-control" name="descricao" style="resize: none" id="exampleFormControlTextarea1" cols="2" rows="4"></textarea>
     </div>
   </div>
   <div class="form-group">

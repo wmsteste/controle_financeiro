@@ -1,5 +1,7 @@
 <?php
+
   $erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,8 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>CONTROLE FINANCEIRO</title>
-  
+  <script type="text/javascript" src="funcs.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+
 <style type="text/css">
   div.labelC{
     top: 50%;
@@ -29,11 +33,13 @@
     
     <div class="form-group col-md-6">
       <label for="inputNome">Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome"  placeholder="Nome" required="requiored">
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="requiored">
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+      <input type="email" class="form-control" id="busca" name="email" placeholder="Email" onkeyup="buscarNoticias(this.value)" required="requiored">
+      <div id="resultado"></div>
+      <div id="conteudo"></div>
             <?php
 
                 if ($erro_email==1) {
@@ -41,6 +47,7 @@
                 }
 
               ?>
+            
     </div>
     
     <div class="form-group col-md-6">
