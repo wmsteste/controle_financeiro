@@ -41,6 +41,7 @@ echo $button2.' '. $botao  ;
 
 } else{
 	echo "Erro ao registrar Conta";
+	echo $button2.' '. $botao  ;
 }
 
 

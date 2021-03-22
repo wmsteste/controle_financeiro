@@ -3,13 +3,15 @@ require_once('db.class.php');
 
 
 	 $nome = $_POST['nome'];
+	 $sobrenome = $_POST['sobrenome'];
 	 $email = $_POST['email'];
 	 $senha = md5($_POST['senha']);
+	 $celular =$_POST['telefone'];
 	 $endereco = $_POST['endereco'];
 	 $complemento = $_POST['complemento'];
-	 $cidade = ($_POST['cidade']);
-	 $estado = ($_POST['estado']);
-	 $cep = ($_POST['CEP']);
+	 $cidade = $_POST['cidade'];
+	 $estado = $_POST['estado'];
+	 $cep = $_POST['CEP'];
 
 $button2 = "<a href=../index.php><button>Voltar para Login</button></a>";
 
@@ -47,7 +49,7 @@ if ($email_existe) {
 	die();
 }
 
-$sql = "insert into usuarios(nome, email, senha, endereco, complemento, cidade, estado, cep) values('$nome', '$email', '$senha', '$endereco', '$complemento', '$cidade', '$estado', '$cep')";
+$sql = "insert into usuarios(nome, sobrenome,email, senha,celular, endereco, complemento, cidade, estado, cep) values('$nome','$sobrenome', '$email', '$senha','$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep')";
 
 //executar a query
 if(mysqli_query($link, $sql)){

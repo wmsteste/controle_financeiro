@@ -30,10 +30,13 @@
  <div class="labelC"> <h2>CADASTRE-SE</h2></div>
 <form method="POST" action="app/registra_usuario.php" id="formCadastrarse" >
   <div class="form-row">
-    
-    <div class="form-group col-md-6">
-      <label for="inputNome">Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="requiored">
+    <div class="col">
+      <label for="inputNome">Primeiro Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="PrimeiroNome"  required="required">      
+    </div>
+    <div class="col">
+      <label for="inputNome">Sobrenome</label>
+      <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Sobrenome"required="required">      
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
@@ -53,6 +56,10 @@
     <div class="form-group col-md-6">
       <label for="inputPassword4">Senha</label>
       <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="telefone">Telefone </label>
+      <input type="number" class="form-control" id="telefone" name="telefone" placeholder="(**)99999-9999" min="11" max="11" required="requiored">
     </div>
   </div>
   

@@ -14,8 +14,8 @@ $sql = mysqli_query($link,"SELECT * FROM usuarios WHERE email = '$valor'");
 // Exibe todos os valores encontrados
 while ($noticias = mysqli_fetch_object($sql)) {
 	$res = $noticias->email;
-	if ($res == $valor) {
-		echo "esse email ja se econtra cadastrado";
+	if ($res === $valor) {
+		echo "<font color='#FF0000'> Esse e-mail ja pertence a um usuario ja cadastrado</font>";
 	}
 	
 	
