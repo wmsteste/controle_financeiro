@@ -47,7 +47,6 @@ $table .= "</tbody>";
   ?>
   <h4>Contas Compartilhadas</h4>
   <form method="POST" id="form-pesquisa" action="home.php?page=view_contas">
-    <label>Pesquisar</label>
     <input type="text" name="tipo" id="tipo" placeholder="Pesquisar">
     <button class="btn btn-outline-success">Pesquisar</button>
 </form>
