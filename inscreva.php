@@ -32,7 +32,7 @@
   <div class="form-row">
     <div class="col">
       <label for="inputNome">Primeiro Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="PrimeiroNome"  required="required">      
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Primeiro Nome"  required="required">      
     </div>
     <div class="col">
       <label for="inputNome">Sobrenome</label>

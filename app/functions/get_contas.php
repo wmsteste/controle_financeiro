@@ -1,40 +1,54 @@
-<<?php 
+<?php 
+	require_once('../db.class.php');
 
-	session_start();
-	require_once('db.class.php');
+ 	 $tipo = $_POST['tipo'];
+	 $sobrenome = $_POST['sobrenome'];
+	 $email = $_POST['email'];
+	
+	 $celular =$_POST['telefone'];
 
-	$usuario = $_POST['email'];
-	$senha = md5($_POST['senha']);
-
-
-	$sql = " SELECT id_usuario, id_conta, nome, empresa, valor, tipo, descricao, fixo, dividir FROM conta ";
+	$sql = " SELECT id_usuario, id_conta, nome, empresa, valor, tipo, descricao, fixo, dividir FROM contas WHERE tipo = '$tipo' ";
 
 	$objDb = new db();
 	$link = $objDb->conecta_mysql();
 
 	$resultado_id = mysqli_query($link, $sql);
 
-	if ($resultado_id) {
-		
-		$dados_usuario = mysqli_fetch_array($resultado_id);
-		if (isset($dados_usuario['email'])) {
-		
-			$_SESSION['id_usuario'] = $dados_usuario['id_usuario'];
-			$_SESSION['id_conta'] = $dados_usuario['id_conta'];
-			$_SESSION['nome'] = $dados_usuario['nome'];
-			$_SESSION['empresa'] = $dados_usuario['empresa'];
-			$_SESSION['valor'] = $dados_usuario['valor'];
-			$_SESSION['tipo'] = $dados_usuario['tipo'];
-			$_SESSION['descricao'] = $dados_usuario['discricao'];
-			$_SESSION['fixo'] = $dados_usuario['fixo'];
-			$_SESSION['dividir'] = $dados_usuario['dividir'];
+$table  = '<table class="table">';
+$table .= '<thead>';
+$table .= '<tr>';
+$table .= '<th>Selecionar Cliente</th>';
+$table .= '<th>idCliente</th>';
+$table .= '<th>Nome</th>';
+$table .= '<th>Telefone</th>';
+$table .= '<th>Endereço</th>';
+$table .= '<th>Email</th>';
+$table .= '<th>Editar</th>';
+$table .= '<th>Excluir</th>';
+$table .= '</tr>';
+$table .= '</thead>';
+$table .= '<tbody>';
 
-			
-		}else{
-			header('location: ../index.php?erro=1');
-		}
+
+	//$dados_usuario = mysqli_fetch_assoc($resultado_id);
+	while ($dados_usuario=mysqli_fetch_array($resultado_id)) {
+$table .= "<tr>";
+$table .= "<th>{$dados_usuario['id_conta']}</th>";
+$table .= "<td>{$dados_usuario['empresa']}</td>";
+$table .= "<td>{$dados_usuario['valor']}</td>";
+$table .= "<td>{$dados_usuario['tipo']}</td>";
+$table .= "<td>{$dados_usuario['descricao']}</td>";
+$table .= "<td>{$dados_usuario['fixo']}</td>";
+$table .= "<td>{$dados_usuario['dividir']}</td>";
+$table .= "<td>{$dados_usuario['id_usuario']}</td>";
+$table .= "</tr>";
+$table .= "</thead>";
+$table .= "</tbody>";
+	}
+	echo $table;
+	
 		
-	}else{
-		echo "Erro na execução da consulta, favor entrar em contato com o Administrador do site";
+	else{
+		 "Erro na execução da consulta, favor entrar em contato com o Administrador do site";
 	}
  ?>

@@ -49,7 +49,7 @@ if ($email_existe) {
 	die();
 }
 
-$sql = "insert into usuarios(nome, sobrenome,email, senha,celular, endereco, complemento, cidade, estado, cep) values('$nome','$sobrenome', '$email', '$senha','$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep')";
+$sql = "insert into usuarios(nome, sobrenome, email, senha, celular, endereco, complemento, cidade, estado, cep) values('$nome','$sobrenome', '$email', '$senha','$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep')";
 
 //executar a query
 if(mysqli_query($link, $sql)){

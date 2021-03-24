@@ -1,10 +1,9 @@
-
 <?php
+ $tipo = $_POST['tipo'];
+ 
+$usuario = $_SESSION['id_usuario'];  
 
-  $tipo = $_POST['tipo'];
-  
-
-  $sql = " SELECT id_usuario, id_conta, nome, empresa, valor, tipo, descricao, fixo, dividir FROM contas WHERE tipo='$tipo' AND dividir='1' ";
+  $sql = " SELECT id_usuario, id_conta, nome, empresa, valor, tipo, descricao, fixo, dividir FROM contas WHERE id_usuario='$usuario' AND dividir='0' AND tipo='$tipo' ";
 
   $objDb = new db();
   $link = $objDb->conecta_mysql();
@@ -45,8 +44,8 @@ $table .= "</tbody>";
   }
  
   ?>
-  <h4>Contas Compartilhadas</h4>
-  <form method="POST" id="form-pesquisa" action="home.php?page=view_contas">
+  <h4>Contas Pessoais</h4>
+  <form method="POST" id="form-pesquisa" action="home.php?page=view_contas2">
     <label>Pesquisar</label>
     <input type="text" name="tipo" id="tipo" placeholder="Pesquisar">
     <button class="btn btn-outline-success">Pesquisar</button>

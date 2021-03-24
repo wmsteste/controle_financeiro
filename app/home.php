@@ -80,8 +80,13 @@ $id_usuario = $_SESSION['nome'];
           <li class="nav-item">
             <a class="nav-link btn-outline-success" href="?page=cadastrouser" aria-current="true">Cadastrar dependentes</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="?page=opcoes"  aria-current="true">Opções</a>
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Contas</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="?page=view_contas">Contas compartilhadas</a></li>
+              <li><a class="dropdown-item" href="?page=view_contas2">Contas Pessoais</a></li>
+              <li><a class="dropdown-item" href="#">...</a></li>
+            </ul>
           </li>
         </ul>
         <form class="d-flex">
