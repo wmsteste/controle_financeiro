@@ -1,5 +1,5 @@
 <?php
-
+ 
   $erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
  
 ?>
@@ -59,7 +59,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="telefone">Telefone </label>
-      <input type="number" class="form-control" id="telefone" name="telefone" placeholder="(**)99999-9999" min="11" max="11" required="requiored">
+      <input type="number" class="form-control" id="telefone" name="telefone" placeholder="(**)99999-9999" min="11"  required="requiored">
     </div>
   </div>
   

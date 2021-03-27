@@ -1,11 +1,11 @@
 <?php
 session_start();
- 
 
 require_once('../db.class.php');
 
 $id_usuario1 = $_SESSION['id_usuario'];
 $id_usuario = $_SESSION['nome'];
+
 
 	 $nome = $id_usuario = $_SESSION['nome'];
 	 $empresa = $_POST['empresa'];
@@ -14,6 +14,9 @@ $id_usuario = $_SESSION['nome'];
 	 $descricao = $_POST['descricao'];
 	 $fixo = $_POST['fixo'];
 	 $dividir = $_POST['dividir'];
+	 $data_cad = $_POST['data_cad'];
+	 $data_para = $_POST['data_para'];
+	 $cod_vinc = $_POST['cod_vinc'];
 
 
 $button2 = "<a href= http://localhost/controle_financeiro/app/home.php?page=cadastroconta ><button>SIM</button></a>";
@@ -23,12 +26,9 @@ $botao ="<a href= http://localhost/controle_financeiro/app/home.php?pages=inicio
 $objDb = new db();
 $link = $objDb->conecta_mysql();
 
-	if (empty($fixo) || empty($dividir)) {
-		$fixo='off';
-		$dividir=0;
-	}
 	
-	$sql = "INSERT INTO contas(id_usuario, nome, empresa, valor, tipo, descricao, fixo, dividir)values('$id_usuario1', '$nome', '$empresa', '$valor', '$tipo', '$descricao', '$fixo', '$dividir')";
+	
+	$sql = "INSERT INTO contas(id_usuario, nome, empresa, valor, tipo, descricao, fixo, dividir, data_cad, data_para, cod_vinc)VALUES('$id_usuario1', '$nome', '$empresa', '$valor', '$tipo', '$descricao', '$fixo', '$dividir', '$data_cad', '$data_para', '$cod_vinc')";
 
 //executar a query
 if(mysqli_query($link, $sql)){
@@ -37,7 +37,6 @@ if(mysqli_query($link, $sql)){
 	echo "<h3>Cadastar Nova Conta?</h3>";
 echo $button2.' '. $botao  ;
 
-	
 
 } else{
 	echo "Erro ao registrar Conta";

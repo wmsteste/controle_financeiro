@@ -1,6 +1,9 @@
 <?php 
+if (!isset($_SESSION['nome'])) {
+  header('Location: ../index.php?erro=1');
+ }
    $data = date("d/m/y");
-
+$cad_vinc = $_SESSION['cod_vinc'];
  ?>
 <h2>Cadastro de contas</h2>
 
@@ -13,7 +16,7 @@
     </div>
     <div class="form-group  col-md-4">
       <label for="inputPassword4">Valor</label>
-      <input type="number" maxlength="9" step="0.01" data-decimals="2" class="form-control" name="valor" id="inputValor" placeholder="R$" required="required">
+      <input type="number" maxlength="7" step="0.01" data-decimals="2" class="form-control" name="valor" id="inputValor" placeholder="R$" required="required">
     </div>
   </div>  
   <div class="form-row">
@@ -30,13 +33,17 @@
         <option>OUTROS</option>
       </select>
     </div>
-     <div class="form-group col-md-4">
-      <label for="inputTipo">Tipo</label>
-      <select id="date" name="date"  class="form-control" required="required">
-        <option selected=""> <?= $data?></option>
-        <option>...</option>
-      </select>
+    <div class="form-group col-md-2">
+      <label for="inputTipo">Para</label>
+      <input type="date" name="data_para" class="form-control" required="required">
     </div>
+     <div class="form-group col-md-2">
+      <label for="inputTipo">Data de cadastro</label>
+      <input type="text"  id="date" class="form-control" value="<?php echo date('d/m/Y');?>" readonly >
+      <input type="hidden" name="data_cad" id="date" class="form-control" value="<?php echo date('Y-m-d');?>" >
+
+    </div>
+    
 </div>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -62,18 +69,19 @@
   <div class="form-check form-check-inline">
     <h5><label>Valor é fixo?</label></h5>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="fixo" id="gridCheck2" value="sim" required="required">
+      <input class="form-check-input" type="radio" name="fixo" id="gridCheck" value="sim" required="required">
       <label class="form-check-label" for="gridCheck">
        SIM
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="fixo" id="gridCheck2" value="nao">
+      <input class="form-check-input" type="radio" name="fixo" id="gridCheck" value="nao">
       <label class="form-check-label" for="gridCheck">
         NÃO
       </label>
     </div>
   </div><br>
+  <input type="hidden" name="cod_vinc" value="<?=$cod_vinc?>">
   <div id="botao"><button type="submit" class="btn btn-primary col-lg-auto">Cadastrar Conta</button></div>
 </form>
 

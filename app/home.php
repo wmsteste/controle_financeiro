@@ -1,18 +1,21 @@
 <?php
+
  session_start();
 
- if (!isset($_SESSION['nome'])) {
- 	header('Location: ../index.php?erro=1');
+  if (!isset($_SESSION['id_usuario'])) {
+  header('Location: ../index.php?erro=1');
  }
+ 
  require_once('db.class.php');
  require_once "functions/pages.php";
+ require_once "../app/funcoes.php";
 $objDb = new db();
 $link = $objDb->conecta_mysql();
 
 
 $id_usuario = $_SESSION['id_usuario'];
-$id_usuario = $_SESSION['nome'];
-
+$usuario_nome = $_SESSION['nome'];
+$cod_vinc = $_SESSION['cod_vinc'];
 ?>
 
 <!DOCTYPE HTML>
@@ -81,7 +84,7 @@ $id_usuario = $_SESSION['nome'];
             <a class="nav-link btn-outline-success" href="?page=cadastrouser" aria-current="true">Cadastrar dependentes</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link btn-outline-success  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Contas</a>
+            <a class="nav-link btn-outline-success  dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true" aria-current="true">Contas</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><a class="dropdown-item" href="?page=view_contas">Contas compartilhadas</a></li>
               <li><a class="dropdown-item" href="?page=view_contas2">Contas Pessoais</a></li>

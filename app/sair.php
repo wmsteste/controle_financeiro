@@ -5,6 +5,7 @@ session_start();
 unset($_SESSION['nome']);
 unset($_SESSION['email']);
 unset($_SESSION['id_usuario']);
+unset($_SESSION['cod_vinc']);
 
 echo "Esperamos que volte em breve!!";
 	

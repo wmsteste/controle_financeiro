@@ -12,8 +12,9 @@ require_once('db.class.php');
 	 $cidade = $_POST['cidade'];
 	 $estado = $_POST['estado'];
 	 $cep = $_POST['CEP'];
+	 $cod_vinc = $_POST['cod_vinc'];
 
-$button2 = "<a href=../index.php><button>Voltar para Login</button></a>";
+$button2 = "<a href=../home.php?page=inicio><button>Voltar para Login</button></a>";
 
 
 $objDb = new db();
@@ -42,23 +43,21 @@ if ($email_existe) {
 	$retorno_get = '';
 
 	if($email_existe){
-		$retorno_get.="erro_email=1&";
+		$retorno_get.="Email Já Cadastrado";
+		echo "$retorno_get";
 	}
 
-	header('Location: ../inscreva.php?'.$retorno_get);
+	
 	die();
 }
 
-$cod_vinc = substr(uniqid(rand()), 0, 6);
 
 $sql = "insert into usuarios(nome, sobrenome, email, senha, celular, endereco, complemento, cidade, estado, cep, cod_vinc) values('$nome','$sobrenome', '$email', '$senha','$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep', '$cod_vinc')";
 
 //executar a query
 if(mysqli_query($link, $sql)){
 	echo "Usuario registrado com Sucesso";
-	echo "<br><br><br>";
-	echo $button2;
-
+	
 } else{
 	echo "Erro ao registrar Usuário";
 }
