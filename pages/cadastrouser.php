@@ -1,5 +1,7 @@
 	<?php
-
+if (!isset($_SESSION['nome'])) {
+  header('Location: ../index.php?erro=1');
+ }
   $erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
  $cod_vinc = $_SESSION['cod_vinc'];
 ?>
@@ -30,7 +32,7 @@
 </head>
 <body> <div class="container">
  <div class="labelC"> <h4>CADASTRE-SE</h4></div>
-<form method="POST" action="home.php?page=cadastrouser" id="ajax_form" >
+<form method="POST" action="home.php?page=cadastrouser" id="ajax_form" name="car_user" >
   <div class="form-row">
     <div class="col">
       <label for="inputNome">Primeiro Nome</label>
@@ -42,7 +44,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="busca" name="email" placeholder="Email" onkeyup="buscarNoticias(this.value)" required="requiored">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email" onkeyup="buscarNoticias(this.value)" required="requiored">
       <div id="resultado"></div>
       <div id="conteudo"></div>
             <?php
@@ -76,7 +78,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" id="cidade" name="cidade" required="requiored">
+      <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" required="requiored">
     </div>
     <div class="form-group col-md-4">
       <label for="inputEstado">Estado</label>
@@ -88,7 +90,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" id="CEP" name="CEP" required="requiored">
+      <input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP" required="requiored">
     </div>
   </div>
   <input type="hidden" name="cod_vinc" value="<?=$cod_vinc?>">
@@ -97,6 +99,14 @@
  
 </form>
 
+<script type="text/javascript">
+
+function limpa() {  
+  var form   = document.getElementById('ajax_form');
+   var nome   = form.nome.value;
+   form.reset();
+}
+</script>
 <script type="text/javascript">
   
   jQuery('document').ready(function() {
@@ -110,7 +120,9 @@
       data: dados,
       success: function(response) {
         //'response' é a resposta do servidor
+        
         alert(response);
+        limpa();
       }
     });
 

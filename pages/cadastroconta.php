@@ -18,6 +18,10 @@ $cad_vinc = $_SESSION['cod_vinc'];
       <label for="inputPassword4">Valor</label>
       <input type="number" maxlength="7" step="0.01" data-decimals="2" class="form-control" name="valor" id="inputValor" placeholder="R$" required="required">
     </div>
+    <div class="form-group col-md-2">
+      <label for="inputTipo">Parcelado?</label>
+      <input type="number" name="parcelado" maxlength="2" min="0" class="form-control" required="required">
+    </div>
   </div>  
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -41,7 +45,6 @@ $cad_vinc = $_SESSION['cod_vinc'];
       <label for="inputTipo">Data de cadastro</label>
       <input type="text"  id="date" class="form-control" value="<?php echo date('d/m/Y');?>" readonly >
       <input type="hidden" name="data_cad" id="date" class="form-control" value="<?php echo date('Y-m-d');?>" >
-
     </div>
     
 </div>

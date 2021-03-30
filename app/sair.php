@@ -7,8 +7,6 @@ unset($_SESSION['email']);
 unset($_SESSION['id_usuario']);
 unset($_SESSION['cod_vinc']);
 
-echo "Esperamos que volte em breve!!";
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +15,7 @@ echo "Esperamos que volte em breve!!";
 </head>
 <body>
 <script type="text/javascript">
-	window.location.href='home.php';
+	window.location.href='../index.php';
 </script>
 </body>
 </html>
