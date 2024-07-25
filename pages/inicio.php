@@ -95,29 +95,41 @@ if (!isset($_SESSION['nome'])) {
 
 <div class="panel-body">
 	<h4>Bem vindo, <?= $_SESSION['nome'] ?>!</h4><br>
-	<div class="col-md-6">
-	    		<h5>usuarios: <?= qutd_user($cod_vinc)?></h5>  
-	    	 <h5>Valor Contas Pagas Mes <?= datapa2($data2) ?>  <?= number_format(ValorGastoTotal($cod_vinc,$_SESSION['id_usuario']),2,",",".") ?> </h5> 
-	    	 <h5>Contas Fixas Compartilhada  <?= number_format(ValorCompartilhadoFixo($cod_vinc),2,",",".") ?> </h5> 
-	    	</div>
-	    	<div class="col-md-6">
-	    		 <h5>Gastos previsto para <?=dataPa($data)?> </h5>
-	    	</div>
-	<div class="">
-		<hr />
+	<h4>Somos um app e viemos para revolucionar o seu controle financeiro!</h4> 
+	<div class="btn-group">
+		<a class="btn btn-primary dropdown-toggle" data-bs-toggle="collapse" href="#mostrar2" role="button" aria-expanded="false" aria-controls="mostrar2">Valor Total R$: <?= number_format(ContaCompartilhadaFixa($link,$cod_vinc)+ContaPessoalFixa($link,$id_usuario)+ContasPessoais($link,$id_usuario)+ContasCompartilhadas($link,$cod_vinc),2,",",".") ?>
+		</a>
+		
+		<div class="collapse" id="mostrar2">
+			<div class="card card-body">
 			<div class="col-md-12">
-	    		<h4>Somos um app e viemos para revolucionar o seu controle financeiro!</h4> 
-	    		<h5>Valor Compartilhado R$: <?= number_format(ValorCompartilhado($cod_vinc)+ValorCompartilhadoFixo($cod_vinc),2,",",".") ?></h5> 
+	    		
+	    		<h5>Valor Compartilhado R$: <?= number_format(ContasCompartilhadas($link,$cod_vinc)+ContaCompartilhadaFixa($link,$cod_vinc),2,",",".") ?></h5> 
 	    	</div>
 	    	<div class="col-md-12">
-	    		<h5>Gatos Pessoais R$: <?= number_format(ValorPessoal($_SESSION['id_usuario']),2,",",".") ?></h5> 
+	    		<h5>Gatos Pessoais R$: <?= number_format(ContaPessoalFixa($link,$id_usuario)+ContasPessoais($link,$id_usuario),2,",",".") ?></h5> 
 	    	</div>
-
-	    	<div class="col-md-12">
-	    		<h5>Valor Total R$: <?= number_format(ValorCompartilhado($cod_vinc)+ValorPessoal($_SESSION['id_usuario'])+ValorCompartilhadoFixo($cod_vinc),2,",",".") ?></h5> 
 	    	</div>
-	    	
-	</div>
-</div>
-
-	    			
+	    </div>
+		
+	  </div>
+		
+		<a class="btn btn-primary  dropdown-toggle" data-bs-toggle="collapse" href="#mostrar" role="button" aria-expanded="false" aria-controls="mostrar" >Previsto para <?= dataPa($data) . ' R$: ' .  number_format(ValorCompartilhado($link,$cod_vinc)+ValorPessoal($link,$id_usuario)+ValorCompartilhadoFixo($link,$cod_vinc)+ValorPessoalFixo($link,$cod_vinc,$id_usuario),2,",",".") ?></a></p>
+	    	<div class="collapse" id="mostrar">
+	    		<div class="card card-body"><h5>usuarios: <?= qutd_user($link,$cod_vinc)?></h5>   
+	    	 <h5>Contas Fixas Compartilhadas para o próximo mês R$: <?= number_format(ValorCompartilhadoFixo($link,$cod_vinc),2,",",".") ?> </h5> 
+	    	 <h5>Contas não Fixas Compartilhadas para o próximo mês R$: <?= number_format(ValorCompartilhado($link,$cod_vinc),2,",",".") ?> </h5>
+	    	 <h5>Contas Pessoais Fixas para o próximo mês R$: <?= number_format(ValorPessoalFixo($link,$cod_vinc,$id_usuario),2,",",".") ?> </h5>
+	    	 <h5>Contas não Fixas Pessoais para o próximo mês R$: <?= number_format(ValorPessoal($link,$id_usuario),2,",",".") ?> </h5>
+	    		</div>
+	    	</div>
+			
+		
+		
+	    <hr />
+	    
+	    <div class="row flex-row justify-content-between">
+	    	<div class="col-8  grafico">1</div>
+	    	<div class="col-4 atualizar">2</div>
+	    </div>
+</div>	    			

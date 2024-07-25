@@ -12,12 +12,13 @@ if (!isset($_SESSION['nome'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>CONTROLE FINANCEIRO</title>
-  <script type="text/javascript" src="funcs.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 <style type="text/css">
   div.labelC{
     top: 50%;
@@ -95,7 +96,7 @@ if (!isset($_SESSION['nome'])) {
   </div>
   <input type="hidden" name="cod_vinc" value="<?=$cod_vinc?>">
   
-  <button type="submit" id="botao" class="btn btn-primary">Cadastrar</button>
+ <center> <button type="submit" id="botao" class="btn btn-primary">Cadastrar</button></center>
  
 </form>
 
@@ -122,7 +123,12 @@ function limpa() {
         //'response' é a resposta do servidor
         
         alert(response);
-        limpa();
+        if (response=='Email Já Cadastrado') {
+          limpa();
+        }else{
+          
+        }
+        
       }
     });
 

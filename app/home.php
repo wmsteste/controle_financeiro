@@ -31,7 +31,7 @@ $cod_vinc = $_SESSION['cod_vinc'];
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<link rel="stylesheet" type="text/css" href="../assets/home.css">
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -68,7 +68,7 @@ $cod_vinc = $_SESSION['cod_vinc'];
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark menu-bar">
     <div class="container-fluid ">
-      <a class="navbar-brand" href="#">Controle Financeiro</a>
+      <a class="navbar-brand" href="?page=inicio">Controle Financeiro</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -84,11 +84,11 @@ $cod_vinc = $_SESSION['cod_vinc'];
             <a class="nav-link btn-outline-success" href="?page=cadastrouser" aria-current="true">Cadastrar dependentes</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link btn-outline-success  dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true" aria-current="true">Contas</a>
+            <a class="nav-link btn-outline-success dropdown-header dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true" aria-current="true">Contas</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><a class="dropdown-item" href="?page=view_contas">Contas compartilhadas</a></li>
               <li><a class="dropdown-item" href="?page=view_contas2">Contas Pessoais</a></li>
-              <li><a class="dropdown-item" href="#">...</a></li>
+              <li><a class="dropdown-item" href="">...</a></li>
             </ul>
           </li>
         </ul>
@@ -122,6 +122,10 @@ $cod_vinc = $_SESSION['cod_vinc'];
 
 
     <!-- JavaScript Bundle with Popper -->
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
       

@@ -5,10 +5,17 @@ if (!isset($_SESSION['nome'])) {
    $data = date("d/m/y");
 $cad_vinc = $_SESSION['cod_vinc'];
  ?>
+ 
+ <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+
+ </head>
+ <body>
 <h2>Cadastro de contas</h2>
 
 	
-	<form method="POST" action="../app/functions/cad_conta.php">
+	<form method="POST" action="home.php?page=cadastroconta" id="ajax_form2" name="" >
 	<div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Empresa</label>
@@ -16,11 +23,11 @@ $cad_vinc = $_SESSION['cod_vinc'];
     </div>
     <div class="form-group  col-md-4">
       <label for="inputPassword4">Valor</label>
-      <input type="number" maxlength="7" step="0.01" data-decimals="2" class="form-control" name="valor" id="inputValor" placeholder="R$" required="required">
+      <input type="number" maxlength="7" min="0.01" step="0.01" data-decimals="2" class="form-control" name="valor" id="inputValor" placeholder="R$" required="required">
     </div>
     <div class="form-group col-md-2">
       <label for="inputTipo">Parcelado?</label>
-      <input type="number" name="parcelado" maxlength="2" min="0" class="form-control" required="required">
+      <input type="number" name="parcelado" maxlength="2" min="1" class="form-control" required="required">
     </div>
   </div>  
   <div class="form-row">
@@ -85,6 +92,43 @@ $cad_vinc = $_SESSION['cod_vinc'];
     </div>
   </div><br>
   <input type="hidden" name="cod_vinc" value="<?=$cod_vinc?>">
-  <div id="botao"><button type="submit" class="btn btn-primary col-lg-auto">Cadastrar Conta</button></div>
+  <center><button type="submit" class="btn btn-primary col-lg-auto">Cadastrar Conta</button></center>
 </form>
+<script type="text/javascript">
 
+function limpa() {  
+  document.getElementById('ajax_form2').reset();
+   
+}
+</script>
+<script type="text/javascript">
+  
+  jQuery('document').ready(function() {
+  jQuery('#ajax_form2').submit(function() {
+    var dados = jQuery(this).serialize();
+    //aqui voce pega o conteudo do atributo action do form
+    var url = $(this).attr('action');
+    jQuery.ajax({
+      type: "POST",
+      url: "../app/functions/cad_conta.php",
+      data: dados,
+      success: function(response) {
+        //'response' é a resposta do servidor
+        if (response =='Conta registrada com Sucesso') {
+          alert(response);
+          limpa();
+        }else{
+          alert(response);
+        }
+        
+      }
+    });
+
+    return false;
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+
+</html>

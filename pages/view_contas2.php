@@ -2,10 +2,11 @@
 if (!isset($_SESSION['nome'])) {
   header('Location: ../index.php?erro=1');
  }
- 
+ if ($_POST) {
+   
 $tipo = $_POST['tipo'];
 
-$data = date('m')+1;
+$data = date('m');
  
 $usuario = $_SESSION['id_usuario'];  
 
@@ -108,6 +109,7 @@ $table .= "</tbody>";
 
   }
  }
+}
   ?>
   <div class="panel-body">
   <h4>Contas Pessoais</h4>
@@ -128,6 +130,6 @@ $table .= "</tbody>";
       </div>
 </form>
 
-   <div><?= $table ?></div>
+  <div><?= $table ?></div>
 
 </div>

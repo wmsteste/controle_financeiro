@@ -23,23 +23,37 @@ $mes=0;
 
 $objDb = new db();
 $link = $objDb->conecta_mysql();
-$button2 = "<a href= http://localhost/controle_financeiro/app/home.php?page=cadastroconta ><button>SIM</button></a>";
-$botao ="<a href= http://localhost/controle_financeiro/app/home.php?pages=inicio ><button>NÃO</button></a>";
 
 if ($parcelado =='1') {
+	if ($fixo =='sim') {
+
+		for ($i= 1 ; $i <= 12; $i++) { 
+		$mes++;
+		$data_para=date('Y/m/d', strtotime($mes."month"));
+
+		$sql = "INSERT INTO contas(id_usuario, nome, empresa, valor, tipo, descricao, fixo, dividir, data_cad, data_para,situacao, cod_vinc)VALUES('$id_usuario1', '$nome', '$empresa', '$valor', '$tipo', '$descricao', '$fixo', '$dividir', '$data_cad', '$data_para','$situacao', '$cod_vinc')";
+
+		if(mysqli_query($link, $sql)){
+	}
+	}
+	echo "Conta registrada com Sucesso";
+	
+		
+	}elseif ($fixo=='nao') {
+		
+	
 	$sql = "INSERT INTO contas(id_usuario, nome, empresa, valor, tipo, descricao, fixo, dividir, data_cad, data_para,situacao, cod_vinc)VALUES('$id_usuario1', '$nome', '$empresa', '$valor', '$tipo', '$descricao', '$fixo', '$dividir', '$data_cad', '$data_para','$situacao', '$cod_vinc')";
 
 //executar a query
 if(mysqli_query($link, $sql)){
-	echo "<h2>Conta registrada com Sucesso</h2>";
-	echo "<br><br><br>";
-	echo "<h3>Cadastar Nova Conta?</h3>";
-echo $button2.' '. $botao  ;
+	echo "Conta registrada com Sucesso";
+	
 
 
 } else{
 	echo "Erro ao registrar Conta";
-	echo $button2.' '. $botao  ;
+	
+}
 }
 }elseif ($parcelado > '1') {
  
@@ -54,11 +68,8 @@ echo $button2.' '. $botao  ;
 	}
 	}
 	
-	echo "<h2>Conta registrada com Sucesso</h2>";
-	echo "<br><br><br>";
-	echo "<h3>Cadastar Nova Conta?</h3>";
-echo $button2.' '. $botao  ;
-echo $data_para;
+	echo "Conta registrada com Sucesso";
+	
 }
 
 

@@ -1,13 +1,20 @@
 <?php
 if (!isset($_SESSION['nome'])) {
   header('Location: ../index.php?erro=1');
+
  }
+$cod_vinc = $_SESSION['cod_vinc'];
+ if ($_POST) {
+   
  
   $tipo = $_POST['tipo'];
-  $cod_vinc = $_SESSION['cod_vinc'];
-  $data = date('m')+1;
+
+  
+  
+  $data = date('m');
 
 if ($tipo == "TODOS") {
+  
   $sql = " SELECT id_usuario, id_conta, nome, empresa, valor, tipo, descricao, fixo, dividir,situacao FROM contas WHERE dividir='1' AND cod_vinc = '$cod_vinc' AND MONTH(data_para)='$data'";
 
   $objDb = new db();
@@ -75,18 +82,13 @@ if ($dados_usuario['situacao']=="sim") {
 
   $resultado_id = mysqli_query($link, $sql);
 
-  $table  = '<table class="table table-bordered table-hover">';
+  $table  = '<table class="table  table-hover">';
   $table .= '<thead class="thead-dark">';
   $table .= '<tr>';
   $table .= '<th scope="col" col-sm-2>ID CONTA</th>';
   $table .= '<th scope="col">Empresa</th>';
   $table .= '<th scope="col">Valor</th>';
   $table .= '<th scope="col">Tipo</th>';
-  $table .= '<th scope="col">Fixo</th>';
-  $table .= '<th scope="col">Descrição</th>';
-  $table .= '<th scope="col">Cadastro feito por</th>';
-  $table .= '<th scope="col">Editar</th>';
-  $table .= '<th scope="col">Excluir</th>';
   $table .= '</tr>';
   $table .= '</thead>';
   $table .= '<tbody>';
@@ -95,7 +97,7 @@ if ($dados_usuario['situacao']=="sim") {
   $table .= "<tr>";
   $table .= "<th>{$dados_usuario['id_conta']}</th>";
   $table .= "<td>{$dados_usuario['empresa']}</td>";
-  $table .= "<td>{$dados_usuario['valor']}</td>";
+  $table .= "<td>R$ {$dados_usuario['valor']}</td>";
   $table .= "<td>{$dados_usuario['tipo']}</td>";
   $table .= "<td>{$dados_usuario['fixo']}</td>";
   $table .= "<td>{$dados_usuario['descricao']}</td>";
@@ -108,6 +110,7 @@ if ($dados_usuario['situacao']=="sim") {
 
   }
  }
+}
   ?>
   <div>
   <h4>Contas Compartilhadas</h4>

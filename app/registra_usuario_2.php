@@ -29,37 +29,34 @@ $email_existe = false;
 if($resultado_id = mysqli_query($link, $sql)){
 	$dados_usuario = mysqli_fetch_array($resultado_id);
 
-	if (isset($dados_usuario['email'])) {
-		$email_existe = true;
+	if ($dados_usuario['email']===$email) {
+		$retorno_get="Email Já Cadastrado";
+		echo "$retorno_get";
+	}else{
+		$sql = "insert into usuarios(nome, sobrenome, email, senha, celular, endereco, complemento, cidade, estado, cep, cod_vinc) values('$nome','$sobrenome', '$email','$senha', '$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep', '$cod_vinc')";
+
+			//executar a query
+			if(mysqli_query($link, $sql)){
+				echo "Usuario registrado com Sucesso";
+			} else{
+
+				echo "Erro ao registrar Usuário";
+			}
 	}
 	
+
+	
+	die();
+
+
 }else{
 	echo "Erro ao tentar localizar o registro de email";
 }
 
 
-if ($email_existe) {
 
-	$retorno_get = '';
-
-	if($email_existe){
-		$retorno_get.="Email Já Cadastrado";
-		echo "$retorno_get";
-	}
-
-	
-	die();
-}
+//$senha1 = md5(substr(uniqid(rand()), 0, 6));
 
 
-$sql = "insert into usuarios(nome, sobrenome, email, senha, celular, endereco, complemento, cidade, estado, cep, cod_vinc) values('$nome','$sobrenome', '$email', '$senha','$celular', '$endereco', '$complemento', '$cidade', '$estado', '$cep', '$cod_vinc')";
-
-//executar a query
-if(mysqli_query($link, $sql)){
-	echo "Usuario registrado com Sucesso";
-	
-} else{
-	echo "Erro ao registrar Usuário";
-}
 
 ?>
